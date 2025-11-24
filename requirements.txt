@@ -1,0 +1,12 @@
+# Application Flask (pour déploiement App Engine)
+Flask==3.0.0
+gunicorn==21.2.0
+google-cloud-datastore==2.19.0
+
+# Scripts de benchmark (pour exécution locale)
+pandas>=2.0.0
+matplotlib>=3.7.0
+requests>=2.31.0
+
+# Workflow (optionnel)
+# snakemake>=8.0.0

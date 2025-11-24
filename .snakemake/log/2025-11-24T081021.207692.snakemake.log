@@ -1,0 +1,124 @@
+Assuming unrestricted shared filesystem usage.
+host: cs-402329414389-default
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job            count
+-----------  -------
+all                1
+plot_conc          1
+plot_fanout        1
+plot_post          1
+test_conc          1
+test_fanout        1
+test_post          1
+total              7
+
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Nov 24 08:10:21 2025]
+localrule test_post:
+    output: out/post.csv
+    jobid: 4
+    reason: Missing output files: out/post.csv
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Mon Nov 24 08:29:11 2025]
+Finished jobid: 4 (Rule: test_post)
+1 of 7 steps (14%) done
+Execute 1 jobs...
+[Mon Nov 24 08:29:11 2025]
+localrule test_fanout:
+    output: out/fanout.csv
+    jobid: 6
+    reason: Missing output files: out/fanout.csv
+    resources: tmpdir=/tmp
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/home/naitslimanimaroua/tinyinsta/Snakefile", line 80:
+Command 'set -euo pipefail;  
+        mkdir -p out
+        echo "PARAM,AVG_TIME,RUN,FAILED" > out/fanout.csv
+        
+        echo ">>> [1/3] Config: 10 followers"
+        python clear_datastore.py
+        python seed.py --users 1000 --posts 100000 --follows 10
+        sleep 30
+        python benchmark.py --url https://tinyints.ew.r.appspot.com --test fanout --followers 10 --prefix user --output out
+        
+        echo ">>> [2/3] Config: 50 followers"
+        python clear_datastore.py
+        python seed.py --users 1000 --posts 100000 --follows 50
+        sleep 30
+        python benchmark.py --url https://tinyints.ew.r.appspot.com --test fanout --followers 50 --prefix user --output out
+        
+        echo ">>> [3/3] Config: 100 followers"
+        python clear_datastore.py
+        python seed.py --users 1000 --posts 100000 --follows 100
+        sleep 30
+        python benchmark.py --url https://tinyints.ew.r.appspot.com --test fanout --followers 100 --prefix user --output out' returned non-zero exit status 1.
+[Mon Nov 24 09:09:26 2025]
+Error in rule test_fanout:
+    message: None
+    jobid: 6
+    output: out/fanout.csv
+    shell:
+        
+        mkdir -p out
+        echo "PARAM,AVG_TIME,RUN,FAILED" > out/fanout.csv
+        
+        echo ">>> [1/3] Config: 10 followers"
+        python clear_datastore.py
+        python seed.py --users 1000 --posts 100000 --follows 10
+        sleep 30
+        python benchmark.py --url https://tinyints.ew.r.appspot.com --test fanout --followers 10 --prefix user --output out
+        
+        echo ">>> [2/3] Config: 50 followers"
+        python clear_datastore.py
+        python seed.py --users 1000 --posts 100000 --follows 50
+        sleep 30
+        python benchmark.py --url https://tinyints.ew.r.appspot.com --test fanout --followers 50 --prefix user --output out
+        
+        echo ">>> [3/3] Config: 100 followers"
+        python clear_datastore.py
+        python seed.py --users 1000 --posts 100000 --follows 100
+        sleep 30
+        python benchmark.py --url https://tinyints.ew.r.appspot.com --test fanout --followers 100 --prefix user --output out
+        
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Mon Nov 24 09:09:26 2025]
+Error in rule test_fanout:
+    message: None
+    jobid: 6
+    output: out/fanout.csv
+    shell:
+        
+        mkdir -p out
+        echo "PARAM,AVG_TIME,RUN,FAILED" > out/fanout.csv
+        
+        echo ">>> [1/3] Config: 10 followers"
+        python clear_datastore.py
+        python seed.py --users 1000 --posts 100000 --follows 10
+        sleep 30
+        python benchmark.py --url https://tinyints.ew.r.appspot.com --test fanout --followers 10 --prefix user --output out
+        
+        echo ">>> [2/3] Config: 50 followers"
+        python clear_datastore.py
+        python seed.py --users 1000 --posts 100000 --follows 50
+        sleep 30
+        python benchmark.py --url https://tinyints.ew.r.appspot.com --test fanout --followers 50 --prefix user --output out
+        
+        echo ">>> [3/3] Config: 100 followers"
+        python clear_datastore.py
+        python seed.py --users 1000 --posts 100000 --follows 100
+        sleep 30
+        python benchmark.py --url https://tinyints.ew.r.appspot.com --test fanout --followers 100 --prefix user --output out
+        
+        (command exited with non-zero exit code)
+Complete log(s): /home/naitslimanimaroua/tinyinsta/.snakemake/log/2025-11-24T081021.207692.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

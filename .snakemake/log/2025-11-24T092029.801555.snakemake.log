@@ -1,0 +1,87 @@
+Assuming unrestricted shared filesystem usage.
+host: cs-402329414389-default
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job            count
+-----------  -------
+all                1
+plot_conc          1
+plot_fanout        1
+plot_post          1
+test_conc          1
+test_fanout        1
+total              6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Nov 24 09:20:30 2025]
+localrule test_fanout:
+    output: out/fanout.csv
+    jobid: 6
+    reason: Missing output files: out/fanout.csv
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Mon Nov 24 09:44:09 2025]
+Finished jobid: 6 (Rule: test_fanout)
+1 of 6 steps (17%) done
+Execute 1 jobs...
+[Mon Nov 24 09:44:09 2025]
+localrule plot_post:
+    input: out/post.csv
+    output: out/post.png
+    jobid: 3
+    reason: Missing output files: out/post.png
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Mon Nov 24 09:44:13 2025]
+Finished jobid: 3 (Rule: plot_post)
+2 of 6 steps (33%) done
+Execute 1 jobs...
+[Mon Nov 24 09:44:13 2025]
+localrule test_conc:
+    output: out/conc.csv
+    jobid: 2
+    reason: Missing output files: out/conc.csv; Code has changed since last execution
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Mon Nov 24 09:54:27 2025]
+Finished jobid: 2 (Rule: test_conc)
+3 of 6 steps (50%) done
+Execute 1 jobs...
+[Mon Nov 24 09:54:27 2025]
+localrule plot_fanout:
+    input: out/fanout.csv
+    output: out/fanout.png
+    jobid: 5
+    reason: Missing output files: out/fanout.png; Input files updated by another job: out/fanout.csv
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Mon Nov 24 09:54:28 2025]
+Finished jobid: 5 (Rule: plot_fanout)
+4 of 6 steps (67%) done
+Execute 1 jobs...
+[Mon Nov 24 09:54:28 2025]
+localrule plot_conc:
+    input: out/conc.csv
+    output: out/conc.png
+    jobid: 1
+    reason: Missing output files: out/conc.png; Input files updated by another job: out/conc.csv
+    resources: tmpdir=/tmp
+[Mon Nov 24 09:54:30 2025]
+Finished jobid: 1 (Rule: plot_conc)
+5 of 6 steps (83%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Nov 24 09:54:30 2025]
+localrule all:
+    input: out/conc.png, out/post.png, out/fanout.png
+    jobid: 0
+    reason: Input files updated by another job: out/fanout.png, out/conc.png, out/post.png
+    resources: tmpdir=/tmp
+[Mon Nov 24 09:54:30 2025]
+Finished jobid: 0 (Rule: all)
+6 of 6 steps (100%) done
+Complete log(s): /home/naitslimanimaroua/tinyinsta/.snakemake/log/2025-11-24T092029.801555.snakemake.log
