@@ -18,10 +18,10 @@ import sys
 
 
 def parse_temps(valeur):
-    """Convertit '123.45ms' en float 123.45"""
+    """Convertit '123.45ms' en float en secondes (0.12345)"""
     if isinstance(valeur, str):
-        return float(valeur.replace('ms', ''))
-    return float(valeur)
+        return float(valeur.replace('ms', '')) / 1000.0  # Conversion ms -> s
+    return float(valeur) / 1000.0
 
 
 def creer_barplot(csv_path: str, output_path: str, titre: str, label_x: str):
